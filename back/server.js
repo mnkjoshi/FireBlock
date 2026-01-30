@@ -10,7 +10,7 @@ import blockchain from './blockchain.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // ===== MIDDLEWARE =====
 app.use(cors({
@@ -101,16 +101,19 @@ app.use((err, req, res, next) => {
 });
 
 // ===== START SERVER =====
-app.listen(PORT, '0.0.0.0', () => {
-  console.log('');
-  console.log('🔥 FireBlock Backend Server');
-  console.log('================================');
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`Server running on: http://0.0.0.0:${PORT}`);
-  console.log(`API Health Check: http://0.0.0.0:${PORT}/api/health`);
-  console.log(`External access: http://YOUR_VPS_IP:${PORT}`);
-  console.log('================================');
-  console.log('');
+const listener = app.listen(PORT, (error) => {
+  if (error == null) {
+    console.log('');
+    console.log('🔥 FireBlock Backend Server');
+    console.log('================================');
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`Server running on port: ${listener.address().port}`);
+    console.log(`http://localhost:${listener.address().port}`);
+    console.log('================================');
+    console.log('');
+  } else {
+    console.log(error);
+  }
 });
 
 export default app;
