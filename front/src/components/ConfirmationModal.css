@@ -1,0 +1,9 @@
+.modal-body {
+  margin: var(--spacing-lg) 0;
+}
+
+.modal-body p {
+  color: #424242;
+  line-height: 1.6;
+  margin: 0;
+}

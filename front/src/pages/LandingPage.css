@@ -1,0 +1,263 @@
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== NAVIGATION ===== */
+.landing-nav {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+.logo-text {
+  color: var(--color-primary);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  flex: 1;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.hero-content {
+  max-width: 600px;
+  z-index: 2;
+  position: relative;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #424242;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+}
+
+.btn-large {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: 1.125rem;
+}
+
+/* ===== BLOCKCHAIN VISUAL ===== */
+.blockchain-visual {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 400px;
+  opacity: 0.4;
+}
+
+.node {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-base);
+  border: 3px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+.node-inner {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.node-1 {
+  top: 50px;
+  left: 50px;
+  animation-delay: 0s;
+}
+
+.node-2 {
+  top: 50px;
+  right: 50px;
+  animation-delay: 0.5s;
+}
+
+.node-3 {
+  bottom: 50px;
+  left: 50px;
+  animation-delay: 1s;
+}
+
+.node-4 {
+  bottom: 50px;
+  right: 50px;
+  animation-delay: 1.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.connections line {
+  animation: pulse-line 2s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* ===== CONTENT SECTION ===== */
+.content-section {
+  padding: var(--spacing-xxl) 0;
+  background-color: var(--color-white);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xxl);
+}
+
+.feature {
+  text-align: center;
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-base);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.feature h3 {
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature p {
+  color: #616161;
+  margin-bottom: 0;
+}
+
+.mission-statement {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-base);
+  border-radius: var(--radius-md);
+}
+
+.mission-statement h2 {
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.mission-statement p {
+  color: #424242;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .blockchain-visual {
+    opacity: 0.2;
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .blockchain-visual {
+    display: none;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-content {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+}
