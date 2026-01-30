@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 import './LedgerPage.css';
 
 const LedgerPage = () => {
@@ -23,7 +24,7 @@ const LedgerPage = () => {
   const fetchLedgerData = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('/api/ledger', {
+      const response = await fetch(`${API_BASE_URL}/api/ledger`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

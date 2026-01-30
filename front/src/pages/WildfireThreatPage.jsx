@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 import './WildfireThreatPage.css';
 
 const WildfireThreatPage = () => {
@@ -22,7 +23,7 @@ const WildfireThreatPage = () => {
   const fetchThreatData = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('/api/ledger/threat-score', {
+      const response = await fetch(`${API_BASE_URL}/api/ledger/threat-score`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

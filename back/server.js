@@ -14,7 +14,12 @@ const PORT = process.env.PORT || 5000;
 
 // ===== MIDDLEWARE =====
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173'],
+  origin: [
+    'http://localhost:3000', 
+    'http://localhost:5173',
+    'https://fireblockapp.web.app',
+    process.env.FRONTEND_URL // Add your frontend URL in .env
+  ].filter(Boolean),
   credentials: true
 }));
 app.use(express.json());
@@ -96,13 +101,14 @@ app.use((err, req, res, next) => {
 });
 
 // ===== START SERVER =====
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log('');
   console.log('🔥 FireBlock Backend Server');
   console.log('================================');
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`Server running on: http://localhost:${PORT}`);
-  console.log(`API Health Check: http://localhost:${PORT}/api/health`);
+  console.log(`Server running on: http://0.0.0.0:${PORT}`);
+  console.log(`API Health Check: http://0.0.0.0:${PORT}/api/health`);
+  console.log(`External access: http://YOUR_VPS_IP:${PORT}`);
   console.log('================================');
   console.log('');
 });

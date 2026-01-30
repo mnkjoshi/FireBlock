@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 import ConfirmationModal from '../components/ConfirmationModal';
 import './AdminPage.css';
 
@@ -38,7 +39,7 @@ const AdminPage = () => {
 
     try {
       const token = localStorage.getItem('fireblock_auth');
-      const response = await fetch('/api/admin/entry', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/entry`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,7 +82,7 @@ const AdminPage = () => {
 
     try {
       const token = localStorage.getItem('fireblock_auth');
-      const response = await fetch(`/api/admin/nullify/${blockId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/nullify/${blockId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
